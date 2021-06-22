@@ -19,18 +19,18 @@ public class OrderReceipt {
 
     // TODO: Long method
     public String build() {
-        StringBuilder output = new StringBuilder();
+        StringBuilder receipt = new StringBuilder();
 
-        output.append(RECEIPT_HEADER);
+        receipt.append(RECEIPT_HEADER);
 
-        buildCustomerInfo(output);
+        buildCustomerInfo(receipt);
 
-        buildLineItemsInfo(output);
+        buildLineItemsInfo(receipt);
 
-        buildTotalSalesTaxInfo(output, order.getTotalSalesTax());
+        buildTotalSalesTaxInfo(receipt, order.getTotalSalesTax());
 
-        buildTotalAmountInfo(output, order.getTotalAmount());
-        return output.toString();
+        buildTotalAmountInfo(receipt, order.getTotalAmount());
+        return receipt.toString();
     }
 
     private void buildTotalAmountInfo(StringBuilder output, double totalAmount) {
