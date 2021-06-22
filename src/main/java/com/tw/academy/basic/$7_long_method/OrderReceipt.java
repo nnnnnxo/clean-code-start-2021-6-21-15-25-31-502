@@ -31,15 +31,7 @@ public class OrderReceipt {
         double totalSalesTax = 0d;
         double totalAmount = 0d;
         for (LineItem lineItem : order.getLineItems()) {
-            // TODO: Feature envy
-            output.append(lineItem.getDescription());
-            output.append('\t');
-            output.append(lineItem.getPrice());
-            output.append('\t');
-            output.append(lineItem.getQuantity());
-            output.append('\t');
-            output.append(lineItem.totalAmount());
-            output.append('\n');
+            buildLineItemInfo(output, lineItem);
 
             // calculate sales tax @ rate of 10%
             // TODO: Feature envy & Magic number
@@ -57,5 +49,17 @@ public class OrderReceipt {
         // print total amount
         output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
+    }
+
+    // TODO: Feature envy
+    private void buildLineItemInfo(StringBuilder output, LineItem lineItem) {
+        output.append(lineItem.getDescription());
+        output.append('\t');
+        output.append(lineItem.getPrice());
+        output.append('\t');
+        output.append(lineItem.getQuantity());
+        output.append('\t');
+        output.append(lineItem.totalAmount());
+        output.append('\n');
     }
 }
