@@ -15,6 +15,7 @@ public class OrderService {
 
         String minTime = getTime(timeArr, 0);
         String maxTime = getTime(timeArr, 1);
+        Time min = new Time(minTime);
         if (hasBeenOrdered(id, month, minTime, maxTime)){
             return "Error: something wrong, please call the manager.";
         }
