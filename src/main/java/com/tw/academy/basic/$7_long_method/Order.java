@@ -32,11 +32,7 @@ public class Order {
     }
 
     public double getTotalAmount() {
-        double totalAmount = 0d;
-        for (LineItem lineItem : getLineItems()) {
-            totalAmount += lineItem.getTotalAmountWithSalesTax();
-        }
-        return totalAmount;
+        return getLineItems().stream().mapToDouble(LineItem::getTotalAmountWithSalesTax).sum();
     }
 
     public double getTotalSalesTax() {
