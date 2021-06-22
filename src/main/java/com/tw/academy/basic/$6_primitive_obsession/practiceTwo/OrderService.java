@@ -36,14 +36,6 @@ public class OrderService {
         return false;
     }
 
-    private void setMinHours(Time startTime, TimeRange timeRange) {
-        timeRange.setStartTime(startTime);
-    }
-
-    private void setMaxHours(Time endTime, TimeRange timeRange) {
-        timeRange.setEndTime(endTime);
-    }
-
     /**
      * 已预定
      */
