@@ -10,4 +10,8 @@ public class Time {
     public String getTime() {
         return time;
     }
+
+    public int getHours() {
+        return Integer.parseInt(getTime().split(":")[0]);
+    }
 }
