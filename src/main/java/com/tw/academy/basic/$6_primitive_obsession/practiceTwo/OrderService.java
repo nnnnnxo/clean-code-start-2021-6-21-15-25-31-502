@@ -46,10 +46,6 @@ public class OrderService {
         return false;
     }
 
-    private int getHours(String time) {
-        return Integer.parseInt(time.split(":")[0]);
-    }
-
     private int getHours(Time time) {
         return Integer.parseInt(time.getTime().split(":")[0]);
     }
