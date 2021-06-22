@@ -30,7 +30,7 @@ public class OrderService {
         if (countHasBook != null) {
             TimeRange orderedTimeRange = countHasBook.getOrDefault(month, null);
             if (orderedTimeRange != null) {
-                if (orderedTimeRange.isConflict(requestTimeRange)) return true;
+                return orderedTimeRange.isConflict(requestTimeRange);
             }
         }
         return false;
