@@ -17,7 +17,7 @@ public class OrderService {
         }
 
         HashMap<String, Integer> timeMap = new HashMap<>();
-        timeMap.put("max", maxTime.getHours());
+        setMaxHours(maxTime, timeMap);
         timeMap.put("min", minTime.getHours());
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
         monthMap.put(month, timeMap);
@@ -41,6 +41,10 @@ public class OrderService {
             }
         }
         return false;
+    }
+
+    private void setMaxHours(Time maxTime, HashMap<String, Integer> timeMap) {
+        timeMap.put("max", maxTime.getHours());
     }
 
     private Integer getMaxHours(HashMap<String, Integer> countHasBookInThisMonth) {
