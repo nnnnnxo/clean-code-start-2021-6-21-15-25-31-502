@@ -8,6 +8,9 @@ package com.tw.academy.basic.$7_long_method;
  * @since   2018-1-1
  */
 public class OrderReceipt {
+    public static final String RECEIPT_HEADER = "======Printing Orders======\n";
+    public static final String SALES_TAX_LABEL = "Sales Tax";
+    public static final String TOTAL_AMOUNT_LABEL = "Total Amount";
     private Order order;
 
     public OrderReceipt(Order order) {
@@ -19,8 +22,7 @@ public class OrderReceipt {
         StringBuilder output = new StringBuilder();
 
         // print headers
-        // TODO: Magic number
-        output.append("======Printing Orders======\n");
+        output.append(RECEIPT_HEADER);
 
         // TODO: Feature envy
         output.append(order.getCustomerName());
@@ -50,12 +52,10 @@ public class OrderReceipt {
         }
 
         // prints the state tax
-        // TODO: Magic number
-        output.append("Sales Tax").append('\t').append(totalSalesTax);
+        output.append(SALES_TAX_LABEL).append('\t').append(totalSalesTax);
 
         // print total amount
-        // TODO: Magic number
-        output.append("Total Amount").append('\t').append(totalAmount);
+        output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
     }
 }
