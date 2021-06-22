@@ -51,8 +51,7 @@ public class OrderReceipt {
     }
 
     private void buildCustomerInfo(StringBuilder output) {
-        output.append(order.getCustomerName());
-        output.append(order.getCustomerAddress());
+        output.append(order.getCustomerName() + order.getCustomerAddress());
     }
 
     private void buildLineItemInfo(StringBuilder output, LineItem lineItem) {
