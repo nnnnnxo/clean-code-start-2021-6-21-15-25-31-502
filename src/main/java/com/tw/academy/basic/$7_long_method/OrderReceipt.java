@@ -35,19 +35,19 @@ public class OrderReceipt {
         receipt.append(RECEIPT_HEADER);
     }
 
-    private void buildTotalAmountInfo(StringBuilder output, double totalAmount) {
-        output.append(TOTAL_AMOUNT_LABEL).append(TAB_SEPARATOR).append(totalAmount);
+    private void buildTotalAmountInfo(StringBuilder receipt, double totalAmount) {
+        receipt.append(TOTAL_AMOUNT_LABEL).append(TAB_SEPARATOR).append(totalAmount);
     }
 
-    private void buildTotalSalesTaxInfo(StringBuilder output, double totalSalesTax) {
-        output.append(SALES_TAX_LABEL).append(TAB_SEPARATOR).append(totalSalesTax);
+    private void buildTotalSalesTaxInfo(StringBuilder receipt, double totalSalesTax) {
+        receipt.append(SALES_TAX_LABEL).append(TAB_SEPARATOR).append(totalSalesTax);
     }
 
-    private void buildLineItemsInfo(StringBuilder output) {
-        output.append(order.getOrderItemsInfo());
+    private void buildLineItemsInfo(StringBuilder receipt) {
+        receipt.append(order.getOrderItemsInfo());
     }
 
-    private void buildCustomerInfo(StringBuilder output) {
-        output.append(order.getCustomerInfo());
+    private void buildCustomerInfo(StringBuilder receipt) {
+        receipt.append(order.getCustomerInfo());
     }
 }
