@@ -43,10 +43,12 @@ public class OrderReceipt {
     }
 
     private void buildLineItemsInfo(StringBuilder output) {
+        String lineItemsInfo = "";
         for (LineItem lineItem : order.getLineItems()) {
-            output.append(lineItem.toString());
-            output.append("\n");
+            lineItemsInfo = lineItemsInfo.concat(lineItem.toString());
+            lineItemsInfo = lineItemsInfo.concat("\n");
         }
+        output.append(lineItemsInfo);
     }
 
     private void buildCustomerInfo(StringBuilder output) {
