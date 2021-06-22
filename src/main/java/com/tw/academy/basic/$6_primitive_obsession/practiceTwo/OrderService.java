@@ -5,10 +5,7 @@ import java.util.HashMap;
 
 public class OrderService {
 
-    /**
-     * 已预定
-     */
-    public HashMap<String, HashMap<String, HashMap<String, Integer>>> ordered = new HashMap<>();
+    private HashMap<String, HashMap<String, HashMap<String, Integer>>> ordered = new HashMap<>();
 
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
@@ -24,12 +21,12 @@ public class OrderService {
         timeMap.put("min", minTime.getHours());
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
         monthMap.put(month, timeMap);
-        ordered.put(id, monthMap);
+        getOrdered().put(id, monthMap);
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
     public boolean hasBeenOrdered(String id, String month, Time minTime, Time maxTime) {
-        HashMap<String, HashMap<String, Integer>> countHasBook = ordered.getOrDefault(id, null);
+        HashMap<String, HashMap<String, Integer>> countHasBook = getOrdered().getOrDefault(id, null);
         if (countHasBook != null) {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
@@ -44,5 +41,12 @@ public class OrderService {
             }
         }
         return false;
+    }
+
+    /**
+     * 已预定
+     */
+    public HashMap<String, HashMap<String, HashMap<String, Integer>>> getOrdered() {
+        return ordered;
     }
 }
