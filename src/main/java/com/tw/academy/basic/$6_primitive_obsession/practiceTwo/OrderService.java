@@ -12,6 +12,9 @@ public class OrderService {
 
         Time minTime = new Time(timeArr[0]);
         Time maxTime = new Time(timeArr[1]);
+        TimeRange requestTimeRange = new TimeRange();
+        requestTimeRange.setStartTime(minTime);
+        requestTimeRange.setEndTime(maxTime);
         if (hasBeenOrdered(id, month, minTime, maxTime)){
             return "Error: something wrong, please call the manager.";
         }
