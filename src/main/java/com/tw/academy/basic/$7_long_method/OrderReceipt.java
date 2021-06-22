@@ -21,22 +21,15 @@ public class OrderReceipt {
     public String build() {
         StringBuilder output = new StringBuilder();
 
-        // print headers
         output.append(RECEIPT_HEADER);
 
         buildCustomerInfo(output);
 
-        double totalSalesTax = 0d;
-        double totalAmount = 0d;
         buildLineItemsInfo(output);
 
-        totalSalesTax = order.getTotalSalesTax();
+        buildTotalSalesTaxInfo(output, order.getTotalSalesTax());
 
-        totalAmount = order.getTotalAmount();
-
-        buildTotalSalesTaxInfo(output, totalSalesTax);
-
-        buildTotalAmountInfo(output, totalAmount);
+        buildTotalAmountInfo(output, order.getTotalAmount());
         return output.toString();
     }
 
