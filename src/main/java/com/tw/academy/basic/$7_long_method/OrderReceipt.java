@@ -25,8 +25,7 @@ public class OrderReceipt {
         output.append(RECEIPT_HEADER);
 
         // TODO: Feature envy
-        output.append(order.getCustomerName());
-        output.append(order.getCustomerAddress());
+        buildCustomerInfo(output);
 
         double totalSalesTax = 0d;
         double totalAmount = 0d;
@@ -49,6 +48,11 @@ public class OrderReceipt {
         // print total amount
         output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
+    }
+
+    private void buildCustomerInfo(StringBuilder output) {
+        output.append(order.getCustomerName());
+        output.append(order.getCustomerAddress());
     }
 
     private void buildLineItemInfo(StringBuilder output, LineItem lineItem) {
