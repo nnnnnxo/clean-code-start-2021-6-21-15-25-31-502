@@ -51,12 +51,20 @@ public class OrderService {
         timeRange.setStartHours(startTime.getHours());
     }
 
+    private void setMaxHours(Time endTime, TimeRange timeRange) {
+        timeRange.setEndHours(endTime.getHours());
+    }
+
     private void setMaxHours(Time maxTime, HashMap<String, Integer> timeMap) {
         timeMap.put("max", maxTime.getHours());
     }
 
     private Integer getMaxHours(HashMap<String, Integer> countHasBookInThisMonth) {
         return countHasBookInThisMonth.get("max");
+    }
+
+    private Integer getMaxHours(TimeRange timeRange) {
+        return timeRange.getEndHours();
     }
 
     private Integer getMinHours(HashMap<String, Integer> countHasBookInThisMonth) {
