@@ -17,19 +17,15 @@ public class OrderReceipt {
         this.order = order;
     }
 
-    // TODO: Long method
     public String build() {
         StringBuilder receipt = new StringBuilder();
 
         buildReceiptHeader(receipt);
-
         buildCustomerInfo(receipt);
-
         buildLineItemsInfo(receipt);
-
         buildTotalSalesTaxInfo(receipt, order.getTotalSalesTax());
-
         buildTotalAmountInfo(receipt, order.getTotalAmount());
+
         return receipt.toString();
     }
 
