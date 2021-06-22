@@ -44,7 +44,8 @@ public class OrderReceipt {
 
     private void buildLineItemsInfo(StringBuilder output) {
         for (LineItem lineItem : order.getLineItems()) {
-            buildLineItemInfo(output, lineItem);
+            output.append(lineItem.toString());
+            output.append("\n");
         }
     }
 
@@ -52,8 +53,4 @@ public class OrderReceipt {
         output.append(order.getCustomerInfo());
     }
 
-    private void buildLineItemInfo(StringBuilder output, LineItem lineItem) {
-        output.append(lineItem.toString());
-        output.append("\n");
-    }
 }
