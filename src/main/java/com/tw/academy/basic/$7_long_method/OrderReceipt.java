@@ -28,9 +28,7 @@ public class OrderReceipt {
 
         double totalSalesTax = 0d;
         double totalAmount = 0d;
-        for (LineItem lineItem : order.getLineItems()) {
-            buildLineItemInfo(output, lineItem);
-        }
+        buildLineItemsInfo(output);
 
         totalSalesTax = order.getTotalSalesTax();
 
@@ -42,6 +40,12 @@ public class OrderReceipt {
         // print total amount
         output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
+    }
+
+    private void buildLineItemsInfo(StringBuilder output) {
+        for (LineItem lineItem : order.getLineItems()) {
+            buildLineItemInfo(output, lineItem);
+        }
     }
 
     private void buildCustomerInfo(StringBuilder output) {
