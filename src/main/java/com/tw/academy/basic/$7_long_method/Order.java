@@ -42,8 +42,7 @@ public class Order {
     public double getTotalSalesTax() {
         double totalSalesTax = 0d;
         for (LineItem lineItem : getLineItems()) {
-            double salesTax = lineItem.getSalesTax();
-            totalSalesTax += salesTax;
+            totalSalesTax += lineItem.getSalesTax();
         }
         return totalSalesTax;
     }
