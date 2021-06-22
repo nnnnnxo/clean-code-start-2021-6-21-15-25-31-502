@@ -17,7 +17,7 @@ public class OrderService {
         String maxTime = getTime(timeArr, 1);
         Time min = new Time(minTime);
         Time max = new Time(maxTime);
-        if (hasBeenOrdered(id, month, minTime, maxTime)){
+        if (hasBeenOrdered(id, month, min, max)){
             return "Error: something wrong, please call the manager.";
         }
 
@@ -30,7 +30,7 @@ public class OrderService {
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
-    public Boolean hasBeenOrdered(String id, String month, String minTime, String maxTime) {
+    public Boolean hasBeenOrdered(String id, String month, Time minTime, Time maxTime) {
         HashMap<String, HashMap<String, Integer>> countHasBook = ordered.getOrDefault(id, null);
         if (countHasBook != null) {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
