@@ -8,16 +8,14 @@ package com.tw.academy.basic.$7_long_method;
  * @since   2018-1-1
  */
 public class OrderReceipt {
-    // TODO: Naming
-    private Order o;
+    private Order order;
 
-    public OrderReceipt(Order o) {
-        this.o = o;
+    public OrderReceipt(Order order) {
+        this.order = order;
     }
 
-    // TODO: Long method & Naming
-    //todo: rename -- Tom
-    public String printReceipt() {
+    // TODO: Long method
+    public String build() {
         StringBuilder output = new StringBuilder();
 
         // print headers
@@ -25,13 +23,13 @@ public class OrderReceipt {
         output.append("======Printing Orders======\n");
 
         // TODO: Feature envy
-        output.append(o.getCustomerName());
-        output.append(o.getCustomerAddress());
+        output.append(order.getCustomerName());
+        output.append(order.getCustomerAddress());
 
         // TODO: Naming
         double totSalesTx = 0d;
         double tot = 0d;
-        for (LineItem lineItem : o.getLineItems()) {
+        for (LineItem lineItem : order.getLineItems()) {
             // TODO: Feature envy
             output.append(lineItem.getDescription());
             output.append('\t');
