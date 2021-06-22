@@ -16,11 +16,11 @@ public class OrderService {
             return "Error: something wrong, please call the manager.";
         }
 
-        HashMap<String, Integer> timeMap = new HashMap<>();
-        setMaxHours(maxTime, timeMap);
-        setMinHours(minTime, timeMap);
+        HashMap<String, Integer> timeRange = new HashMap<>();
+        setMaxHours(maxTime, timeRange);
+        setMinHours(minTime, timeRange);
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
-        monthMap.put(month, timeMap);
+        monthMap.put(month, timeRange);
         getOrdered().put(id, monthMap);
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
