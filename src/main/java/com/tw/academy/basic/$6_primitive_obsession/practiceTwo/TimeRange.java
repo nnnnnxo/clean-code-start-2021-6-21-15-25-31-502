@@ -37,8 +37,8 @@ public class TimeRange {
     }
 
     boolean isOverlap(TimeRange timeRange) {
-        return (Integer) timeRange.getStartHours() <= (Integer) getStartTime().getHours()
-                && (Integer) getStartTime().getHours() <= (Integer) timeRange.getEndHours();
+        return (Integer) getStartHours() <= (Integer) timeRange.getStartTime().getHours()
+                && (Integer) timeRange.getStartTime().getHours() <= (Integer) getEndHours();
     }
 
     boolean isContain(TimeRange timeRange) {
@@ -47,7 +47,7 @@ public class TimeRange {
     }
 
     boolean isConflict(TimeRange requestTimeRange) {
-        if (requestTimeRange.isOverlap(this)) return true;
+        if (isOverlap(requestTimeRange)) return true;
         return isContain(requestTimeRange);
     }
 }
