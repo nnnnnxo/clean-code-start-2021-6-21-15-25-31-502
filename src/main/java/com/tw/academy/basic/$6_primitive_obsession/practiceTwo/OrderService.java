@@ -13,8 +13,8 @@ public class OrderService {
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
 
-        Time minTime = new Time(getTime(timeArr, 0));
-        Time maxTime = new Time(getTime(timeArr, 1));
+        Time minTime = new Time(timeArr[0]);
+        Time maxTime = new Time(timeArr[1]);
         if (hasBeenOrdered(id, month, minTime, maxTime)){
             return "Error: something wrong, please call the manager.";
         }
@@ -44,9 +44,5 @@ public class OrderService {
             }
         }
         return false;
-    }
-
-    private String getTime(String[] timeArr, int i) {
-        return timeArr[i];
     }
 }
