@@ -14,7 +14,7 @@ public class OrderReceipt {
     public static final String RECEIPT_HEADER = "======Printing Orders======";
     public static final String SALES_TAX_LABEL = "Sales Tax";
     public static final String TOTAL_AMOUNT_LABEL = "Total Amount";
-    private Order order;
+    private final Order order;
 
     public OrderReceipt(Order order) {
         this.order = order;

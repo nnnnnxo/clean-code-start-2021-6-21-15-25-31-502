@@ -4,9 +4,9 @@ import static com.tw.academy.basic.$7_long_method.Separator.TAB_SEPARATOR;
 
 public class LineItem {
 	public static final double SALE_TAX_RATE = .10;
-	private String description;
-	private double price;
-	private int quantity;
+	private final String description;
+	private final double price;
+	private final int quantity;
 
 	public LineItem(String description, double price, int quantity) {
 		this.description = description;
