@@ -54,7 +54,6 @@ public class TimeRange {
 
     boolean isConflict(TimeRange requestTimeRange) {
         if (requestTimeRange.isOverlap(this)) return true;
-        if (isContain(requestTimeRange)) return true;
-        return false;
+        return isContain(requestTimeRange);
     }
 }
