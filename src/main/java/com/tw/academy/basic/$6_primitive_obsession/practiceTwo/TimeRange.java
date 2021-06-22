@@ -35,4 +35,12 @@ public class TimeRange {
     public Time getStartTime() {
         return startTime;
     }
+
+    boolean isOverlap(TimeRange timeRange) {
+        if ((Integer) timeRange.getStartHours() <= (Integer) getStartTime().getHours()
+                && (Integer) getStartTime().getHours() <= (Integer) timeRange.getEndHours()) {
+            return true;
+        }
+        return false;
+    }
 }

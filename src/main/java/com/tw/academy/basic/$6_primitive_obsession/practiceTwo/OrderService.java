@@ -33,7 +33,7 @@ public class OrderService {
         if (countHasBook != null) {
             TimeRange countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (isOverlap(requestTimeRange, countHasBookInThisMonth)) return true;
+                if (requestTimeRange.isOverlap(countHasBookInThisMonth)) return true;
                 if (isContain(requestTimeRange, countHasBookInThisMonth)) return true;
             }
         }
@@ -43,14 +43,6 @@ public class OrderService {
     private boolean isContain(TimeRange requestTimeRange, TimeRange countHasBookInThisMonth) {
         if ((Integer) countHasBookInThisMonth.getStartHours() <= (Integer) requestTimeRange.getEndTime().getHours()
                 && (Integer) requestTimeRange.getEndTime().getHours() <= (Integer) countHasBookInThisMonth.getEndHours()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isOverlap(TimeRange requestTimeRange, TimeRange countHasBookInThisMonth) {
-        if ((Integer) countHasBookInThisMonth.getStartHours() <= (Integer) requestTimeRange.getStartTime().getHours()
-                && (Integer) requestTimeRange.getStartTime().getHours() <= (Integer) countHasBookInThisMonth.getEndHours()) {
             return true;
         }
         return false;
