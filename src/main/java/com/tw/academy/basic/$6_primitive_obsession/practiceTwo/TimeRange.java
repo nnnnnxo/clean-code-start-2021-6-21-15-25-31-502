@@ -28,14 +28,6 @@ public class TimeRange {
         this.endTime = endHours;
     }
 
-    public Time getEndTime() {
-        return endTime;
-    }
-
-    public Time getStartTime() {
-        return startTime;
-    }
-
     boolean isLeftOverlap(TimeRange timeRange) {
         return getStartHours() <= timeRange.getStartHours()
                 && timeRange.getStartHours() <= getEndHours();
