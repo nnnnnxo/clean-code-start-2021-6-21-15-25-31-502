@@ -45,4 +45,13 @@ public class Order {
         }
         return totalSalesTax;
     }
+
+    public String getOrderItemsInfo() {
+        String orderItemsInfo = "";
+        for (LineItem lineItem : getLineItems()) {
+            orderItemsInfo = orderItemsInfo.concat(lineItem.toString());
+            orderItemsInfo = orderItemsInfo.concat("\n");
+        }
+        return orderItemsInfo;
+    }
 }
