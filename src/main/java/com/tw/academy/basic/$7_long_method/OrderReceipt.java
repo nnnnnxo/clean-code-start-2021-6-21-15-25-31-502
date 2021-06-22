@@ -36,9 +36,12 @@ public class OrderReceipt {
 
         buildTotalSalesTaxInfo(output, totalSalesTax);
 
-        // print total amount
-        output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
+        buildTotalAmountInfo(output, totalAmount);
         return output.toString();
+    }
+
+    private void buildTotalAmountInfo(StringBuilder output, double totalAmount) {
+        output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
     }
 
     private void buildTotalSalesTaxInfo(StringBuilder output, double totalSalesTax) {
