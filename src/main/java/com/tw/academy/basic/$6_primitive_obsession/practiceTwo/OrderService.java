@@ -19,11 +19,8 @@ public class OrderService {
             return "Error: something wrong, please call the manager.";
         }
 
-        TimeRange timeRange = new TimeRange();
-        setMaxHours(endTime, timeRange);
-        setMinHours(startTime, timeRange);
         HashMap<String, TimeRange> monthMap = new HashMap<>();
-        monthMap.put(month, timeRange);
+        monthMap.put(month, requestTimeRange);
         getOrdered().put(id, monthMap);
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
