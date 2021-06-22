@@ -1,5 +1,6 @@
 package com.tw.academy.basic.$7_long_method;
 
+import static com.tw.academy.basic.$7_long_method.Separator.LINE_SEPARATOR;
 import static com.tw.academy.basic.$7_long_method.Separator.TAB_SEPARATOR;
 
 /**
@@ -10,7 +11,7 @@ import static com.tw.academy.basic.$7_long_method.Separator.TAB_SEPARATOR;
  * @since 2018-1-1
  */
 public class OrderReceipt {
-    public static final String RECEIPT_HEADER = "======Printing Orders======\n";
+    public static final String RECEIPT_HEADER = "======Printing Orders======";
     public static final String SALES_TAX_LABEL = "Sales Tax";
     public static final String TOTAL_AMOUNT_LABEL = "Total Amount";
     private Order order;
@@ -33,6 +34,7 @@ public class OrderReceipt {
 
     private void buildReceiptHeader(StringBuilder receipt) {
         receipt.append(RECEIPT_HEADER);
+        receipt.append(LINE_SEPARATOR);
     }
 
     private void buildTotalAmountInfo(StringBuilder receipt, double totalAmount) {

@@ -2,6 +2,8 @@ package com.tw.academy.basic.$7_long_method;
 
 import java.util.List;
 
+import static com.tw.academy.basic.$7_long_method.Separator.LINE_SEPARATOR;
+
 public class Order {
     String customerName;
     String address;
@@ -50,7 +52,7 @@ public class Order {
         String orderItemsInfo = "";
         for (LineItem lineItem : getLineItems()) {
             orderItemsInfo = orderItemsInfo.concat(lineItem.toString());
-            orderItemsInfo = orderItemsInfo.concat("\n");
+            orderItemsInfo = orderItemsInfo.concat(LINE_SEPARATOR);
         }
         return orderItemsInfo;
     }
