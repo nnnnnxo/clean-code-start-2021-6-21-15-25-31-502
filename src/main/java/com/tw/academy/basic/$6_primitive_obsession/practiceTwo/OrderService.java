@@ -13,8 +13,6 @@ public class OrderService {
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
 
-        String minTime = getTime(timeArr, 0);
-        String maxTime = getTime(timeArr, 1);
         Time min = new Time(getTime(timeArr, 0));
         Time max = new Time(getTime(timeArr, 1));
         if (hasBeenOrdered(id, month, min, max)){
