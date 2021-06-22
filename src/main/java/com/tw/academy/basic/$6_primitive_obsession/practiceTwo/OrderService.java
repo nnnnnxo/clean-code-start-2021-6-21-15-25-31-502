@@ -28,17 +28,17 @@ public class OrderService {
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
-    public boolean hasBeenOrdered(String id, String month, TimeRange timeRange) {
+    public boolean hasBeenOrdered(String id, String month, TimeRange requestTimeRange) {
         HashMap<String, TimeRange> countHasBook = getOrdered().getOrDefault(id, null);
         if (countHasBook != null) {
             TimeRange countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (getMinHours(countHasBookInThisMonth) <= (Integer) timeRange.getStartTime().getHours()
-                        && (Integer) timeRange.getStartTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) requestTimeRange.getStartTime().getHours()
+                        && (Integer) requestTimeRange.getStartTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
-                if (getMinHours(countHasBookInThisMonth) <= (Integer) timeRange.getEndTime().getHours()
-                        && (Integer) timeRange.getEndTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) requestTimeRange.getEndTime().getHours()
+                        && (Integer) requestTimeRange.getEndTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
             }
