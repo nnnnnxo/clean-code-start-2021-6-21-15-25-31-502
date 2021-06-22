@@ -31,16 +31,20 @@ public class OrderService {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
                 if (getMinHours(countHasBookInThisMonth) <= (Integer) minTime.getHours()
-                        && (Integer) minTime.getHours() <= countHasBookInThisMonth.get("max")) {
+                        && (Integer) minTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
                 if (getMinHours(countHasBookInThisMonth) <= (Integer) maxTime.getHours()
-                        && (Integer) maxTime.getHours() <= countHasBookInThisMonth.get("max")) {
+                        && (Integer) maxTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private Integer getMaxHours(HashMap<String, Integer> countHasBookInThisMonth) {
+        return countHasBookInThisMonth.get("max");
     }
 
     private Integer getMinHours(HashMap<String, Integer> countHasBookInThisMonth) {
