@@ -33,7 +33,7 @@ public class OrderReceipt {
 
             // calculate sales tax @ rate of 10%
             // TODO: Feature envy & Magic number
-            double salesTax = lineItem.totalAmount() * .10;
+            double salesTax = getSalesTax(lineItem);
             totalSalesTax += salesTax;
 
             // TODO: Feature envy
@@ -47,6 +47,10 @@ public class OrderReceipt {
         // print total amount
         output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
+    }
+
+    private double getSalesTax(LineItem lineItem) {
+        return lineItem.totalAmount() * .10;
     }
 
     private void buildCustomerInfo(StringBuilder output) {
