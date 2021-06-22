@@ -28,7 +28,7 @@ public class OrderService {
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
-    public Boolean hasBeenOrdered(String id, String month, Time minTime, Time maxTime) {
+    public boolean hasBeenOrdered(String id, String month, Time minTime, Time maxTime) {
         HashMap<String, HashMap<String, Integer>> countHasBook = ordered.getOrDefault(id, null);
         if (countHasBook != null) {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
