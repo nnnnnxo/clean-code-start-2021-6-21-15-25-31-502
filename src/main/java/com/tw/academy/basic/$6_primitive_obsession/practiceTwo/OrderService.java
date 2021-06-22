@@ -15,7 +15,7 @@ public class OrderService {
         TimeRange requestTimeRange = new TimeRange();
         requestTimeRange.setStartTime(startTime);
         requestTimeRange.setEndTime(endTime);
-        if (hasBeenOrdered(id, month, new TimeRange(startTime, endTime))){
+        if (hasBeenOrdered(id, month, requestTimeRange)){
             return "Error: something wrong, please call the manager.";
         }
 
