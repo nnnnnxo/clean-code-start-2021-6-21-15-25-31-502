@@ -3,9 +3,9 @@ package com.tw.academy.basic.$7_long_method;
 /**
  * This class is a example for bad smell;
  *
- * @author  Thoughtworks
+ * @author Thoughtworks
  * @version 1.0
- * @since   2018-1-1
+ * @since 2018-1-1
  */
 public class OrderReceipt {
     public static final String RECEIPT_HEADER = "======Printing Orders======\n";
@@ -53,13 +53,7 @@ public class OrderReceipt {
 
     // TODO: Feature envy
     private void buildLineItemInfo(StringBuilder output, LineItem lineItem) {
-        output.append(lineItem.getDescription());
-        output.append('\t');
-        output.append(lineItem.getPrice());
-        output.append('\t');
-        output.append(lineItem.getQuantity());
-        output.append('\t');
-        output.append(lineItem.totalAmount());
-        output.append('\n');
+        output.append(lineItem.getDescription() + "\t" + lineItem.getPrice() + "\t" + lineItem.getQuantity() + "\t" + lineItem.totalAmount());
+        output.append("\n");
     }
 }
