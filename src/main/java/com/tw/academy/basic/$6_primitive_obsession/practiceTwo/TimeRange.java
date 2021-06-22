@@ -42,8 +42,8 @@ public class TimeRange {
     }
 
     boolean isContain(TimeRange timeRange) {
-        return getStartHours() <= timeRange.getEndTime().getHours()
-                && timeRange.getEndTime().getHours() <= getEndHours();
+        return getStartHours() <= timeRange.getEndHours()
+                && timeRange.getEndHours() <= getEndHours();
     }
 
     boolean isConflict(TimeRange requestTimeRange) {
