@@ -36,4 +36,8 @@ public class LineItem {
 	public double getSalesTax() {
 		return totalAmount() * .10;
 	}
+
+	public double getTotalAmountWithSalesTax() {
+		return totalAmount() + getSalesTax();
+	}
 }
