@@ -31,4 +31,9 @@ public class LineItem {
 	public String toString() {
 		return getDescription() + "\t" + getPrice() + "\t" + getQuantity() + "\t" + totalAmount();
 	}
+
+	// TODO: Magic number
+	public double getSalesTax() {
+		return totalAmount() * .10;
+	}
 }
