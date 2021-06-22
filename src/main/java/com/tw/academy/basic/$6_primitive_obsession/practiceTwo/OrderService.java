@@ -13,7 +13,7 @@ public class OrderService {
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
 
-        if (hasBeenOrdered(id, month, timeArr)){
+        if (hasBeenOrdered(id, month, timeArr[0], timeArr[1])){
             return "Error: something wrong, please call the manager.";
         }
 
@@ -26,9 +26,7 @@ public class OrderService {
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
-    public Boolean hasBeenOrdered(String id, String month, String[] timeArr) {
-        String minTime = timeArr[0];
-        String maxTime = timeArr[1];
+    public Boolean hasBeenOrdered(String id, String month, String minTime, String maxTime) {
         HashMap<String, HashMap<String, Integer>> countHasBook = ordered.getOrDefault(id, null);
         if (countHasBook != null) {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
