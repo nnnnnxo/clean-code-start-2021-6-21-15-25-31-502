@@ -31,10 +31,10 @@ public class OrderService {
     public boolean hasBeenOrdered(String id, String month, TimeRange requestTimeRange) {
         HashMap<String, TimeRange> countHasBook = getOrdered().getOrDefault(id, null);
         if (countHasBook != null) {
-            TimeRange countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
-            if (countHasBookInThisMonth != null) {
-                if (requestTimeRange.isOverlap(countHasBookInThisMonth)) return true;
-                if (countHasBookInThisMonth.isContain(requestTimeRange)) return true;
+            TimeRange orderedTimeRange = countHasBook.getOrDefault(month, null);
+            if (orderedTimeRange != null) {
+                if (requestTimeRange.isOverlap(orderedTimeRange)) return true;
+                if (orderedTimeRange.isContain(requestTimeRange)) return true;
             }
         }
         return false;
