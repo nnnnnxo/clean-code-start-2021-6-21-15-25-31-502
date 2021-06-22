@@ -16,12 +16,13 @@ public class OrderService {
         String minTime = getTime(timeArr, 0);
         String maxTime = getTime(timeArr, 1);
         Time min = new Time(minTime);
+        Time max = new Time(maxTime);
         if (hasBeenOrdered(id, month, minTime, maxTime)){
             return "Error: something wrong, please call the manager.";
         }
 
         HashMap<String, Integer> timeMap = new HashMap<>();
-        timeMap.put("max", getHours(maxTime));
+        timeMap.put("max", getHours(max));
         timeMap.put("min", getHours(min));
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
         monthMap.put(month, timeMap);
