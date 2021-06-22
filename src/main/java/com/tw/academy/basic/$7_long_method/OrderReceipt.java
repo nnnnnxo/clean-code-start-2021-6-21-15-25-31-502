@@ -37,7 +37,7 @@ public class OrderReceipt {
 
             // TODO: Feature envy
             // calculate total amount of lineItem = price * quantity + 10 % sales tax
-            totalAmount += lineItem.totalAmount() + lineItem.getSalesTax();
+            totalAmount += getTotalAmountWithSalesTax(lineItem);
         }
 
         // prints the state tax
@@ -46,6 +46,10 @@ public class OrderReceipt {
         // print total amount
         output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
+    }
+
+    private double getTotalAmountWithSalesTax(LineItem lineItem) {
+        return lineItem.totalAmount() + lineItem.getSalesTax();
     }
 
     private void buildCustomerInfo(StringBuilder output) {
