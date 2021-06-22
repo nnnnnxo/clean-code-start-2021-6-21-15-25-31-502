@@ -30,11 +30,15 @@ public class OrderReceipt {
         double totalAmount = 0d;
         for (LineItem lineItem : order.getLineItems()) {
             buildLineItemInfo(output, lineItem);
+        }
 
+        for (LineItem lineItem : order.getLineItems()) {
             double salesTax = lineItem.getSalesTax();
             // TODO: Feature envy
             totalSalesTax += salesTax;
+        }
 
+        for (LineItem lineItem : order.getLineItems()) {
             // TODO: Feature envy
             totalAmount += lineItem.getTotalAmountWithSalesTax();
         }
