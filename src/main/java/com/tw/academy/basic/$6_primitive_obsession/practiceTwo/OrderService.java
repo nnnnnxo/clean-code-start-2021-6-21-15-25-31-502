@@ -22,7 +22,7 @@ public class OrderService {
 
         HashMap<String, Integer> timeMap = new HashMap<>();
         timeMap.put("max", getHours(maxTime));
-        timeMap.put("min", getHours(minTime));
+        timeMap.put("min", getHours(min));
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
         monthMap.put(month, timeMap);
         ordered.put(id, monthMap);
@@ -49,6 +49,10 @@ public class OrderService {
 
     private int getHours(String time) {
         return Integer.parseInt(time.split(":")[0]);
+    }
+
+    private int getHours(Time time) {
+        return Integer.parseInt(time.getTime().split(":")[0]);
     }
 
     private String getTime(String[] timeArr, int i) {
