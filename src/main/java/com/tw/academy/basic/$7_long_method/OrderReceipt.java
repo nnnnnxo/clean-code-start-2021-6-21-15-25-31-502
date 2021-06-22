@@ -43,12 +43,17 @@ public class OrderReceipt {
     }
 
     private void buildLineItemsInfo(StringBuilder output) {
-        String lineItemsInfo = "";
-        for (LineItem lineItem : order.getLineItems()) {
-            lineItemsInfo = lineItemsInfo.concat(lineItem.toString());
-            lineItemsInfo = lineItemsInfo.concat("\n");
-        }
+        String lineItemsInfo = getOrderItemsInfo();
         output.append(lineItemsInfo);
+    }
+
+    private String getOrderItemsInfo() {
+        String orderItemsInfo = "";
+        for (LineItem lineItem : order.getLineItems()) {
+            orderItemsInfo = orderItemsInfo.concat(lineItem.toString());
+            orderItemsInfo = orderItemsInfo.concat("\n");
+        }
+        return orderItemsInfo;
     }
 
     private void buildCustomerInfo(StringBuilder output) {
