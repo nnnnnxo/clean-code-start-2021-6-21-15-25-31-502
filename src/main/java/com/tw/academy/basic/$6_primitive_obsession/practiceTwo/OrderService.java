@@ -27,16 +27,18 @@ public class OrderService {
     }
 
     public Boolean hasBeenOrdered(String id, String month, String[] timeArr) {
+        String minTime = timeArr[0];
+        String maxTime = timeArr[1];
         HashMap<String, HashMap<String, Integer>> countHasBook = ordered.getOrDefault(id, null);
         if (countHasBook != null) {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (countHasBookInThisMonth.get("min") <= (Integer) Integer.parseInt(timeArr[0].split(":")[0])
-                        && (Integer) Integer.parseInt(timeArr[0].split(":")[0]) <= countHasBookInThisMonth.get("max")) {
+                if (countHasBookInThisMonth.get("min") <= (Integer) Integer.parseInt(minTime.split(":")[0])
+                        && (Integer) Integer.parseInt(minTime.split(":")[0]) <= countHasBookInThisMonth.get("max")) {
                     return true;
                 }
-                if (countHasBookInThisMonth.get("min") <= (Integer) Integer.parseInt(timeArr[1].split(":")[0])
-                        && (Integer) Integer.parseInt(timeArr[1].split(":")[0]) <= countHasBookInThisMonth.get("max")) {
+                if (countHasBookInThisMonth.get("min") <= (Integer) Integer.parseInt(maxTime.split(":")[0])
+                        && (Integer) Integer.parseInt(maxTime.split(":")[0]) <= countHasBookInThisMonth.get("max")) {
                     return true;
                 }
             }
