@@ -37,8 +37,8 @@ public class TimeRange {
     }
 
     boolean isOverlap(TimeRange timeRange) {
-        return getStartHours() <= timeRange.getStartTime().getHours()
-                && timeRange.getStartTime().getHours() <= getEndHours();
+        return getStartHours() <= timeRange.getStartHours()
+                && timeRange.getStartHours() <= getEndHours();
     }
 
     boolean isContain(TimeRange timeRange) {
