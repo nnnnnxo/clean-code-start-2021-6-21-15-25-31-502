@@ -13,13 +13,15 @@ public class OrderService {
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
 
-        if (hasBeenOrdered(id, month, timeArr[0], timeArr[1])){
+        String minTime = timeArr[0];
+        String maxTime = timeArr[1];
+        if (hasBeenOrdered(id, month, minTime, maxTime)){
             return "Error: something wrong, please call the manager.";
         }
 
         HashMap<String, Integer> timeMap = new HashMap<>();
-        timeMap.put("max", Integer.parseInt(timeArr[1].split(":")[0]));
-        timeMap.put("min", Integer.parseInt(timeArr[0].split(":")[0]));
+        timeMap.put("max", Integer.parseInt(maxTime.split(":")[0]));
+        timeMap.put("min", Integer.parseInt(minTime.split(":")[0]));
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
         monthMap.put(month, timeMap);
         ordered.put(id, monthMap);
