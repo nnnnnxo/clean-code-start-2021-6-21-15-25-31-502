@@ -38,7 +38,7 @@ public class OrderReceipt {
             totalSalesTax += salesTax;
         }
 
-        totalAmount = getTotalAmount();
+        totalAmount = order.getTotalAmount();
 
         // prints the state tax
         output.append(SALES_TAX_LABEL).append('\t').append(totalSalesTax);
@@ -46,15 +46,6 @@ public class OrderReceipt {
         // print total amount
         output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
-    }
-
-    private double getTotalAmount() {
-        double totalAmount = 0d;
-        for (LineItem lineItem : order.getLineItems()) {
-            // TODO: Feature envy
-            totalAmount += lineItem.getTotalAmountWithSalesTax();
-        }
-        return totalAmount;
     }
 
     private void buildCustomerInfo(StringBuilder output) {

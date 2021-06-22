@@ -28,4 +28,12 @@ public class Order {
     public String getCustomerInfo() {
         return getCustomerName() + getCustomerAddress();
     }
+
+    public double getTotalAmount() {
+        double totalAmount = 0d;
+        for (LineItem lineItem : getLineItems()) {
+            totalAmount += lineItem.getTotalAmountWithSalesTax();
+        }
+        return totalAmount;
+    }
 }
