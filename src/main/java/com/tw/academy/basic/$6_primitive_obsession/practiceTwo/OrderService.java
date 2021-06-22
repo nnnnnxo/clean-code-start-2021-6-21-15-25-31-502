@@ -33,15 +33,20 @@ public class OrderService {
         if (countHasBook != null) {
             TimeRange countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (getMinHours(countHasBookInThisMonth) <= (Integer) requestTimeRange.getStartTime().getHours()
-                        && (Integer) requestTimeRange.getStartTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
-                    return true;
-                }
+                if (isOverlap(requestTimeRange, countHasBookInThisMonth)) return true;
                 if (getMinHours(countHasBookInThisMonth) <= (Integer) requestTimeRange.getEndTime().getHours()
                         && (Integer) requestTimeRange.getEndTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
             }
+        }
+        return false;
+    }
+
+    private boolean isOverlap(TimeRange requestTimeRange, TimeRange countHasBookInThisMonth) {
+        if (getMinHours(countHasBookInThisMonth) <= (Integer) requestTimeRange.getStartTime().getHours()
+                && (Integer) requestTimeRange.getStartTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
+            return true;
         }
         return false;
     }
