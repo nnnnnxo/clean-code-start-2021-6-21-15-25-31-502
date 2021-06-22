@@ -18,7 +18,7 @@ public class OrderService {
 
         HashMap<String, Integer> timeMap = new HashMap<>();
         setMaxHours(maxTime, timeMap);
-        timeMap.put("min", minTime.getHours());
+        setMinHours(minTime, timeMap);
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
         monthMap.put(month, timeMap);
         getOrdered().put(id, monthMap);
@@ -41,6 +41,10 @@ public class OrderService {
             }
         }
         return false;
+    }
+
+    private void setMinHours(Time minTime, HashMap<String, Integer> timeMap) {
+        timeMap.put("min", minTime.getHours());
     }
 
     private void setMaxHours(Time maxTime, HashMap<String, Integer> timeMap) {
