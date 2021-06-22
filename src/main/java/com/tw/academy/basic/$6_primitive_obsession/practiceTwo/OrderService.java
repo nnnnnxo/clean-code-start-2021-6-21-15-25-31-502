@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class OrderService {
 
-    private HashMap<String, HashMap<String, TimeRange>> ordered = new HashMap<>();
+    private final HashMap<String, HashMap<String, TimeRange>> ordered = new HashMap<>();
 
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
