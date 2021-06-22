@@ -63,6 +63,10 @@ public class OrderService {
         return countHasBookInThisMonth.get("min");
     }
 
+    private Integer getMinHours(TimeRange timeRange) {
+        return timeRange.getStartHours();
+    }
+
     /**
      * 已预定
      */
