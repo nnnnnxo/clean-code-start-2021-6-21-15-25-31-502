@@ -32,7 +32,7 @@ public class OrderReceipt {
             buildLineItemInfo(output, lineItem);
         }
 
-        totalSalesTax = getTotalSalesTax();
+        totalSalesTax = order.getTotalSalesTax();
 
         totalAmount = order.getTotalAmount();
 
@@ -42,16 +42,6 @@ public class OrderReceipt {
         // print total amount
         output.append(TOTAL_AMOUNT_LABEL).append('\t').append(totalAmount);
         return output.toString();
-    }
-
-    private double getTotalSalesTax() {
-        double totalSalesTax = 0d;
-        for (LineItem lineItem : order.getLineItems()) {
-            double salesTax = lineItem.getSalesTax();
-            // TODO: Feature envy
-            totalSalesTax += salesTax;
-        }
-        return totalSalesTax;
     }
 
     private void buildCustomerInfo(StringBuilder output) {
