@@ -10,35 +10,35 @@ public class OrderService {
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
 
-        Time minTime = new Time(timeArr[0]);
-        Time maxTime = new Time(timeArr[1]);
+        Time startTime = new Time(timeArr[0]);
+        Time endTime = new Time(timeArr[1]);
         TimeRange requestTimeRange = new TimeRange();
-        requestTimeRange.setStartTime(minTime);
-        requestTimeRange.setEndTime(maxTime);
-        if (hasBeenOrdered(id, month, minTime, maxTime)){
+        requestTimeRange.setStartTime(startTime);
+        requestTimeRange.setEndTime(endTime);
+        if (hasBeenOrdered(id, month, startTime, endTime)){
             return "Error: something wrong, please call the manager.";
         }
 
         TimeRange timeRange = new TimeRange();
-        setMaxHours(maxTime, timeRange);
-        setMinHours(minTime, timeRange);
+        setMaxHours(endTime, timeRange);
+        setMinHours(startTime, timeRange);
         HashMap<String, TimeRange> monthMap = new HashMap<>();
         monthMap.put(month, timeRange);
         getOrdered().put(id, monthMap);
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
-    public boolean hasBeenOrdered(String id, String month, Time minTime, Time maxTime) {
+    public boolean hasBeenOrdered(String id, String month, Time startTime, Time endTime) {
         HashMap<String, TimeRange> countHasBook = getOrdered().getOrDefault(id, null);
         if (countHasBook != null) {
             TimeRange countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (getMinHours(countHasBookInThisMonth) <= (Integer) minTime.getHours()
-                        && (Integer) minTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) startTime.getHours()
+                        && (Integer) startTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
-                if (getMinHours(countHasBookInThisMonth) <= (Integer) maxTime.getHours()
-                        && (Integer) maxTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) endTime.getHours()
+                        && (Integer) endTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
             }
