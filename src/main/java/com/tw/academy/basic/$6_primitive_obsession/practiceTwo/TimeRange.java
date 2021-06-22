@@ -2,7 +2,7 @@ package com.tw.academy.basic.$6_primitive_obsession.practiceTwo;
 
 public class TimeRange {
     private Time startTime;
-    private int endHours;
+    private Time endTime;
 
     public int getStartHours() {
         return startTime.getHours();
@@ -13,10 +13,10 @@ public class TimeRange {
     }
 
     public int getEndHours() {
-        return endHours;
+        return endTime.getHours();
     }
 
-    public void setEndHours(int endHours) {
-        this.endHours = endHours;
+    public void setEndTime(Time endHours) {
+        this.endTime = endHours;
     }
 }

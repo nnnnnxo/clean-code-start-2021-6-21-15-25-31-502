@@ -48,7 +48,7 @@ public class OrderService {
     }
 
     private void setMaxHours(Time endTime, TimeRange timeRange) {
-        timeRange.setEndHours(endTime.getHours());
+        timeRange.setEndTime(endTime);
     }
 
     private Integer getMaxHours(TimeRange timeRange) {
