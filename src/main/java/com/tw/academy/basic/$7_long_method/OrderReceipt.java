@@ -15,12 +15,6 @@ public class OrderReceipt {
         this.o = o;
     }
 
-    // TODO: Dead Code
-    //Deprecated
-    public String printCustomerName() {
-        return o.getCustomerName();
-    }
-
     // TODO: Long method & Naming
     //todo: rename -- Tom
     public String printReceipt() {
@@ -30,16 +24,10 @@ public class OrderReceipt {
         // TODO: Magic number
         output.append("======Printing Orders======\n");
 
-        // TODO: Dead Code
-        // print date, bill no, customer name
-//        output.append("Date - " + order.getDate();
         // TODO: Feature envy
         output.append(o.getCustomerName());
         output.append(o.getCustomerAddress());
-        // TODO: Dead Code
-//        output.append(order.getCustomerLoyaltyNumber());
 
-        // prints lineItems
         // TODO: Naming
         double totSalesTx = 0d;
         double tot = 0d;
