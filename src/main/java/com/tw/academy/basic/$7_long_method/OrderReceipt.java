@@ -51,13 +51,8 @@ public class OrderReceipt {
         return output.toString();
     }
 
-    // TODO: Feature envy
     private void buildLineItemInfo(StringBuilder output, LineItem lineItem) {
-        output.append(toString(lineItem));
+        output.append(lineItem.toString());
         output.append("\n");
-    }
-
-    private String toString(LineItem lineItem) {
-        return lineItem.getDescription() + "\t" + lineItem.getPrice() + "\t" + lineItem.getQuantity() + "\t" + lineItem.totalAmount();
     }
 }

@@ -27,4 +27,8 @@ public class LineItem {
     double totalAmount() {
         return price * quantity;
     }
+
+	public String toString() {
+		return getDescription() + "\t" + getPrice() + "\t" + getQuantity() + "\t" + totalAmount();
+	}
 }
