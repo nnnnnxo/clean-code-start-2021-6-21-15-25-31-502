@@ -45,11 +45,8 @@ public class TimeRange {
     }
 
     boolean isContain(TimeRange timeRange) {
-        if ((Integer) getStartHours() <= (Integer) timeRange.getEndTime().getHours()
-                && (Integer) timeRange.getEndTime().getHours() <= (Integer) getEndHours()) {
-            return true;
-        }
-        return false;
+        return (Integer) getStartHours() <= (Integer) timeRange.getEndTime().getHours()
+                && (Integer) timeRange.getEndTime().getHours() <= (Integer) getEndHours();
     }
 
     boolean isConflict(TimeRange requestTimeRange) {
