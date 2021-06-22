@@ -43,4 +43,12 @@ public class TimeRange {
         }
         return false;
     }
+
+    boolean isContain(TimeRange timeRange) {
+        if ((Integer) getStartHours() <= (Integer) timeRange.getEndTime().getHours()
+                && (Integer) timeRange.getEndTime().getHours() <= (Integer) getEndHours()) {
+            return true;
+        }
+        return false;
+    }
 }
