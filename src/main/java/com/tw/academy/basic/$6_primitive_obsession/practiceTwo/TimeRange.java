@@ -27,4 +27,12 @@ public class TimeRange {
     public void setEndTime(Time endHours) {
         this.endTime = endHours;
     }
+
+    public Time getEndTime() {
+        return endTime;
+    }
+
+    public Time getStartTime() {
+        return startTime;
+    }
 }

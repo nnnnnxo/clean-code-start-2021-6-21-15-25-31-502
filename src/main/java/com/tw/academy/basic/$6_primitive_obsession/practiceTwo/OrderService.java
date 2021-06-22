@@ -15,7 +15,7 @@ public class OrderService {
         TimeRange requestTimeRange = new TimeRange();
         requestTimeRange.setStartTime(startTime);
         requestTimeRange.setEndTime(endTime);
-        if (hasBeenOrdered(id, month, startTime, endTime)){
+        if (hasBeenOrdered(id, month, new TimeRange(startTime, endTime))){
             return "Error: something wrong, please call the manager.";
         }
 
@@ -28,17 +28,17 @@ public class OrderService {
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
-    public boolean hasBeenOrdered(String id, String month, Time startTime, Time endTime) {
+    public boolean hasBeenOrdered(String id, String month, TimeRange timeRange) {
         HashMap<String, TimeRange> countHasBook = getOrdered().getOrDefault(id, null);
         if (countHasBook != null) {
             TimeRange countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (getMinHours(countHasBookInThisMonth) <= (Integer) startTime.getHours()
-                        && (Integer) startTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) timeRange.getStartTime().getHours()
+                        && (Integer) timeRange.getStartTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
-                if (getMinHours(countHasBookInThisMonth) <= (Integer) endTime.getHours()
-                        && (Integer) endTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) timeRange.getEndTime().getHours()
+                        && (Integer) timeRange.getEndTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
                     return true;
                 }
             }
