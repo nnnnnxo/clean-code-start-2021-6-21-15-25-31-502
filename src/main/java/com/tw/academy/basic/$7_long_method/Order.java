@@ -1,6 +1,7 @@
 package com.tw.academy.basic.$7_long_method;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.tw.academy.basic.$7_long_method.Separator.LINE_SEPARATOR;
 
@@ -40,11 +41,7 @@ public class Order {
     }
 
     public String getOrderItemsInfo() {
-        String orderItemsInfo = "";
-        for (LineItem lineItem : getLineItems()) {
-            orderItemsInfo = orderItemsInfo.concat(lineItem.toString());
-            orderItemsInfo = orderItemsInfo.concat(LINE_SEPARATOR);
-        }
-        return orderItemsInfo;
+        String orderItemsInfo = getLineItems().stream().map(LineItem::toString).collect(Collectors.joining(LINE_SEPARATOR));
+        return orderItemsInfo.concat(LINE_SEPARATOR);
     }
 }
