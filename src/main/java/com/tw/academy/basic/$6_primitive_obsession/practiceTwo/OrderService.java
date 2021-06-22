@@ -43,10 +43,6 @@ public class OrderService {
         return false;
     }
 
-    private void setMinHours(Time minTime, HashMap<String, Integer> timeMap) {
-        timeMap.put("min", minTime.getHours());
-    }
-
     private void setMinHours(Time startTime, TimeRange timeRange) {
         timeRange.setStartHours(startTime.getHours());
     }
@@ -55,20 +51,8 @@ public class OrderService {
         timeRange.setEndHours(endTime.getHours());
     }
 
-    private void setMaxHours(Time maxTime, HashMap<String, Integer> timeMap) {
-        timeMap.put("max", maxTime.getHours());
-    }
-
-    private Integer getMaxHours(HashMap<String, Integer> countHasBookInThisMonth) {
-        return countHasBookInThisMonth.get("max");
-    }
-
     private Integer getMaxHours(TimeRange timeRange) {
         return timeRange.getEndHours();
-    }
-
-    private Integer getMinHours(HashMap<String, Integer> countHasBookInThisMonth) {
-        return countHasBookInThisMonth.get("min");
     }
 
     private Integer getMinHours(TimeRange timeRange) {
