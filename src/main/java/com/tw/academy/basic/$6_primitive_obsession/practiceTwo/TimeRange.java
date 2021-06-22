@@ -4,6 +4,14 @@ public class TimeRange {
     private Time startTime;
     private Time endTime;
 
+    public TimeRange() {
+    }
+
+    public TimeRange(Time startTime, Time endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public int getStartHours() {
         return startTime.getHours();
     }
