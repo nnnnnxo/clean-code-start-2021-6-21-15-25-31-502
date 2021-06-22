@@ -30,10 +30,15 @@ public class OrderService {
         if (countHasBook != null) {
             TimeRange orderedTimeRange = countHasBook.getOrDefault(month, null);
             if (orderedTimeRange != null) {
-                if (requestTimeRange.isOverlap(orderedTimeRange)) return true;
-                if (orderedTimeRange.isContain(requestTimeRange)) return true;
+                if (isConflict(requestTimeRange, orderedTimeRange)) return true;
             }
         }
+        return false;
+    }
+
+    private boolean isConflict(TimeRange requestTimeRange, TimeRange orderedTimeRange) {
+        if (requestTimeRange.isOverlap(orderedTimeRange)) return true;
+        if (orderedTimeRange.isContain(requestTimeRange)) return true;
         return false;
     }
 
