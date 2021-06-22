@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class OrderService {
 
-    private HashMap<String, HashMap<String, HashMap<String, Integer>>> ordered = new HashMap<>();
+    private HashMap<String, HashMap<String, TimeRange>> ordered = new HashMap<>();
 
     public String order(String id, String month, String time) {
         String[] timeArr = time.split("~");
@@ -16,19 +16,19 @@ public class OrderService {
             return "Error: something wrong, please call the manager.";
         }
 
-        HashMap<String, Integer> timeRange = new HashMap<>();
+        TimeRange timeRange = new TimeRange();
         setMaxHours(maxTime, timeRange);
         setMinHours(minTime, timeRange);
-        HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
+        HashMap<String, TimeRange> monthMap = new HashMap<>();
         monthMap.put(month, timeRange);
         getOrdered().put(id, monthMap);
         return "Success! You can use the No." + id + " court during " + month + " " + time + ".";
     }
 
     public boolean hasBeenOrdered(String id, String month, Time minTime, Time maxTime) {
-        HashMap<String, HashMap<String, Integer>> countHasBook = getOrdered().getOrDefault(id, null);
+        HashMap<String, TimeRange> countHasBook = getOrdered().getOrDefault(id, null);
         if (countHasBook != null) {
-            HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
+            TimeRange countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
                 if (getMinHours(countHasBookInThisMonth) <= (Integer) minTime.getHours()
                         && (Integer) minTime.getHours() <= getMaxHours(countHasBookInThisMonth)) {
@@ -78,7 +78,7 @@ public class OrderService {
     /**
      * 已预定
      */
-    public HashMap<String, HashMap<String, HashMap<String, Integer>>> getOrdered() {
+    public HashMap<String, HashMap<String, TimeRange>> getOrdered() {
         return ordered;
     }
 }
