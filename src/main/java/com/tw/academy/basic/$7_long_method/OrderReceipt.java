@@ -21,7 +21,7 @@ public class OrderReceipt {
     public String build() {
         StringBuilder receipt = new StringBuilder();
 
-        receipt.append(RECEIPT_HEADER);
+        buildReceiptHeader(receipt);
 
         buildCustomerInfo(receipt);
 
@@ -31,6 +31,10 @@ public class OrderReceipt {
 
         buildTotalAmountInfo(receipt, order.getTotalAmount());
         return receipt.toString();
+    }
+
+    private void buildReceiptHeader(StringBuilder receipt) {
+        receipt.append(RECEIPT_HEADER);
     }
 
     private void buildTotalAmountInfo(StringBuilder output, double totalAmount) {
