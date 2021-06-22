@@ -41,16 +41,16 @@ public class OrderService {
     }
 
     private boolean isContain(TimeRange requestTimeRange, TimeRange countHasBookInThisMonth) {
-        if (getMinHours(countHasBookInThisMonth) <= (Integer) requestTimeRange.getEndTime().getHours()
-                && (Integer) requestTimeRange.getEndTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
+        if ((Integer) countHasBookInThisMonth.getStartHours() <= (Integer) requestTimeRange.getEndTime().getHours()
+                && (Integer) requestTimeRange.getEndTime().getHours() <= (Integer) countHasBookInThisMonth.getEndHours()) {
             return true;
         }
         return false;
     }
 
     private boolean isOverlap(TimeRange requestTimeRange, TimeRange countHasBookInThisMonth) {
-        if (getMinHours(countHasBookInThisMonth) <= (Integer) requestTimeRange.getStartTime().getHours()
-                && (Integer) requestTimeRange.getStartTime().getHours() <= getMaxHours(countHasBookInThisMonth)) {
+        if ((Integer) countHasBookInThisMonth.getStartHours() <= (Integer) requestTimeRange.getStartTime().getHours()
+                && (Integer) requestTimeRange.getStartTime().getHours() <= (Integer) countHasBookInThisMonth.getEndHours()) {
             return true;
         }
         return false;
@@ -62,14 +62,6 @@ public class OrderService {
 
     private void setMaxHours(Time endTime, TimeRange timeRange) {
         timeRange.setEndTime(endTime);
-    }
-
-    private Integer getMaxHours(TimeRange timeRange) {
-        return timeRange.getEndHours();
-    }
-
-    private Integer getMinHours(TimeRange timeRange) {
-        return timeRange.getStartHours();
     }
 
     /**
