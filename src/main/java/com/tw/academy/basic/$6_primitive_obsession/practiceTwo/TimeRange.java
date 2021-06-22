@@ -36,18 +36,18 @@ public class TimeRange {
         return startTime;
     }
 
-    boolean isOverlap(TimeRange timeRange) {
+    boolean isLeftOverlap(TimeRange timeRange) {
         return getStartHours() <= timeRange.getStartHours()
                 && timeRange.getStartHours() <= getEndHours();
     }
 
-    boolean isContain(TimeRange timeRange) {
+    boolean isRightOverlap(TimeRange timeRange) {
         return getStartHours() <= timeRange.getEndHours()
                 && timeRange.getEndHours() <= getEndHours();
     }
 
     boolean isConflict(TimeRange requestTimeRange) {
-        if (isOverlap(requestTimeRange)) return true;
-        return isContain(requestTimeRange);
+        if (isLeftOverlap(requestTimeRange)) return true;
+        return isRightOverlap(requestTimeRange);
     }
 }
