@@ -1,5 +1,7 @@
 package com.tw.academy.basic.$7_long_method;
 
+import static com.tw.academy.basic.$7_long_method.Separator.TAB_SEPARATOR;
+
 public class LineItem {
 	public static final double SALE_TAX_RATE = .10;
 	private String description;
@@ -29,7 +31,7 @@ public class LineItem {
     }
 
 	public String toString() {
-		return getDescription() + "\t" + getPrice() + "\t" + getQuantity() + "\t" + totalAmount();
+		return getDescription() + TAB_SEPARATOR + getPrice() + TAB_SEPARATOR + getQuantity() + TAB_SEPARATOR + totalAmount();
 	}
 
 	public double getSalesTax() {
