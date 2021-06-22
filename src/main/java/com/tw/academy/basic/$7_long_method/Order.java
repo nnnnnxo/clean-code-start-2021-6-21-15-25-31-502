@@ -40,11 +40,7 @@ public class Order {
     }
 
     public double getTotalSalesTax() {
-        double totalSalesTax = 0d;
-        for (LineItem lineItem : getLineItems()) {
-            totalSalesTax += lineItem.getSalesTax();
-        }
-        return totalSalesTax;
+        return getLineItems().stream().mapToDouble(LineItem::getSalesTax).sum();
     }
 
     public String getOrderItemsInfo() {
