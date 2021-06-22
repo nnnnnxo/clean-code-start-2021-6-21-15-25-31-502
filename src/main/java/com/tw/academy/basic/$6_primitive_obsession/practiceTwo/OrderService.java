@@ -21,8 +21,8 @@ public class OrderService {
         }
 
         HashMap<String, Integer> timeMap = new HashMap<>();
-        timeMap.put("max", getHours2(maxTime));
-        timeMap.put("min", getHours2(minTime));
+        timeMap.put("max", getHours(maxTime));
+        timeMap.put("min", getHours(minTime));
         HashMap<String, HashMap<String, Integer>> monthMap = new HashMap<>();
         monthMap.put(month, timeMap);
         ordered.put(id, monthMap);
@@ -34,12 +34,12 @@ public class OrderService {
         if (countHasBook != null) {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (countHasBookInThisMonth.get("min") <= (Integer) getHours2(minTime)
-                        && (Integer) getHours2(minTime) <= countHasBookInThisMonth.get("max")) {
+                if (countHasBookInThisMonth.get("min") <= (Integer) getHours(minTime)
+                        && (Integer) getHours(minTime) <= countHasBookInThisMonth.get("max")) {
                     return true;
                 }
-                if (countHasBookInThisMonth.get("min") <= (Integer) getHours2(maxTime)
-                        && (Integer) getHours2(maxTime) <= countHasBookInThisMonth.get("max")) {
+                if (countHasBookInThisMonth.get("min") <= (Integer) getHours(maxTime)
+                        && (Integer) getHours(maxTime) <= countHasBookInThisMonth.get("max")) {
                     return true;
                 }
             }
@@ -47,12 +47,8 @@ public class OrderService {
         return false;
     }
 
-    private int getHours2(String maxTime) {
-        return Integer.parseInt(getHours(maxTime));
-    }
-
-    private String getHours(String time) {
-        return time.split(":")[0];
+    private int getHours(String time) {
+        return Integer.parseInt(time.split(":")[0]);
     }
 
     private String getTime(String[] timeArr, int i) {
