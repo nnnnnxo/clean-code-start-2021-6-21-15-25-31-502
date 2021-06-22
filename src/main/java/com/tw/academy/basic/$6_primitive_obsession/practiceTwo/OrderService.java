@@ -30,17 +30,21 @@ public class OrderService {
         if (countHasBook != null) {
             HashMap<String, Integer> countHasBookInThisMonth = countHasBook.getOrDefault(month, null);
             if (countHasBookInThisMonth != null) {
-                if (countHasBookInThisMonth.get("min") <= (Integer) minTime.getHours()
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) minTime.getHours()
                         && (Integer) minTime.getHours() <= countHasBookInThisMonth.get("max")) {
                     return true;
                 }
-                if (countHasBookInThisMonth.get("min") <= (Integer) maxTime.getHours()
+                if (getMinHours(countHasBookInThisMonth) <= (Integer) maxTime.getHours()
                         && (Integer) maxTime.getHours() <= countHasBookInThisMonth.get("max")) {
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private Integer getMinHours(HashMap<String, Integer> countHasBookInThisMonth) {
+        return countHasBookInThisMonth.get("min");
     }
 
     /**
