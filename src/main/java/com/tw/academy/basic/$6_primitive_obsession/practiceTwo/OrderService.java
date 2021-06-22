@@ -47,6 +47,10 @@ public class OrderService {
         timeMap.put("min", minTime.getHours());
     }
 
+    private void setMinHours(Time startTime, TimeRange timeRange) {
+        timeRange.setStartHours(startTime.getHours());
+    }
+
     private void setMaxHours(Time maxTime, HashMap<String, Integer> timeMap) {
         timeMap.put("max", maxTime.getHours());
     }
